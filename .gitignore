@@ -1,4 +1,5 @@
 p6env/
+.venv/
 __pycache__/
 *.pyc
 .p6tool_config.json
