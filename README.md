@@ -25,6 +25,37 @@ If it saves you time, there is a Ko-fi link under **Settings → Donate**:
 [ko-fi.com/j0kerpack](https://ko-fi.com/j0kerpack). The app is free and
 stays free.
 
+## Quick start with uv (Windows, macOS, Linux)
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then
+run these commands from the cloned repository:
+
+```bash
+uv sync --locked
+uv run PyP6-Roland-P6-Sample-Manager_4_2_3.py
+```
+
+uv creates a local `.venv` and installs the versions in `uv.lock`, including
+drag-and-drop support. There is no need to activate the environment.
+`uv run` also syncs the environment automatically, so the second command is
+enough for subsequent launches. See the [uv project guide](https://docs.astral.sh/uv/guides/projects/)
+for details.
+
+The repository selects Python 3.12 via `.python-version`; uv downloads it
+if needed. Python 3.10+ remains supported, and the `audioop-lts` backport is
+installed automatically when using Python 3.13 or newer.
+
+**System dependencies:** ffmpeg and ffprobe are still needed for MP3
+support. On macOS, install them with `brew install ffmpeg`. On Debian/Ubuntu,
+run `sudo apt install ffmpeg libportaudio2`. On Windows, follow
+[the ffmpeg instructions below](#223-install-ffmpeg).
+
+The selected Python must include Tkinter. If using a system Python on
+Linux, install its matching Tk package (usually `python3-tk`). Check with
+`uv run python -m tkinter`; a small test window should open. Prefer a build
+with Tcl/Tk 8.6 for drag-and-drop compatibility; see
+[the Tcl/Tk notes below](#12-a-note-on-tcltk-90).
+
 ---
 
 ## What's New in 4.x
